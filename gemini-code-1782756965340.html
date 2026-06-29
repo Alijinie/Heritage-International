@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Heritage International School | Ogun State, Nigeria</title>
+    <meta name="description" content="Fully registered Nursery and Primary School in Ogun State, Nigeria. Raising tomorrow's leaders through academic excellence, moral integrity, and modern learning. Admissions Ongoing.">
+    <meta name="keywords" content="Heritage International School, Nursery School Ogun State, Primary School Nigeria, Admissions Ongoing, Best Primary School Ogun State">
+
+    <!-- Tailwind CSS & Chart.js -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- FontAwesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        his: {
+                            cream: '#FAF7F2',    // Sophisticated warm paper
+                            card: '#FFFFFF',     // Pure white surfaces
+                            navy: '#0B1E36',     // Deep academic oxford blue
+                            gold: '#D4AF37',     // Excellence gold
+                            emerald: '#0F865D',  // Growth & Knowledge green
+                            sky: '#4A90E2',      // Friendly accent blue
+                            accent: '#E65F5C'    // Lively coral for CTAs
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- App Custom Styles -->
+    <style>
+        body { background: #FAF7F2; }
+        .glass {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(11, 30, 54, 0.08);
+        }
+        .glass-card {
+            background: linear-gradient(145deg, #FFFFFF 0%, #FAF7F2 100%);
+            border: 1px solid rgba(11, 30, 54, 0.06);
+            box-shadow: 0 12px 35px rgba(11, 30, 54, 0.05);
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .fade-up { animation: fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* 19-Photo Infinite Carousel Animation */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-240px * 19)); }
+        }
+        .carousel-track {
+            display: flex;
+            width: calc(240px * 38);
+            animation: scroll 45s linear infinite;
+        }
+        .carousel-track:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+
+<body class="bg-his-cream text-his-navy font-sans min-h-screen flex flex-col selection:bg-his-gold selection:text-his-navy overflow-x-hidden">
+
+    <!-- Subtle Background Accents -->
+    <div class="fixed inset-0 overflow-hidden -z-10 pointer-events-none opacity-40">
+        <div class="absolute -top-[10%] -left-[10%] w-[500px] h-[500px] bg-his-sky/10 rounded-full blur-[120px]"></div>
+        <div class="absolute top-[30%] -right-[10%] w-[600px] h-[600px] bg-his-gold/10 rounded-full blur-[140px]"></div>
+        <div class="absolute -bottom-[10%] left-[20%] w-[500px] h-[500px] bg-his-emerald/10 rounded-full blur-[120px]"></div>
+    </div>
+
+    <!-- DESKTOP / TOP HEADER -->
+    <header class="fixed top-0 w-full z-40 px-4 sm:px-6 py-4 transition-all duration-300">
+        <div class="max-w-7xl mx-auto glass rounded-2xl sm:rounded-full px-5 py-3 flex justify-between items-center shadow-md shadow-his-navy/5">
+            <!-- Brand Logo -->
+            <div class="flex items-center gap-3 cursor-pointer" onclick="switchView('home')">
+                <div class="h-11 w-11 rounded-full bg-his-navy flex items-center justify-center text-his-gold shadow-inner border border-his-gold/40 flex-shrink-0">
+                    <i class="fa-solid fa-graduation-cap text-xl"></i>
+                </div>
+                <div>
+                    <span class="block text-sm sm:text-base font-extrabold tracking-tight text-his-navy font-serif">HERITAGE INTERNATIONAL</span>
+                    <span class="block text-[9px] sm:text-[10px] text-his-emerald font-bold tracking-widest uppercase">Nursery & Primary School • Ogun State</span>
+                </div>
+            </div>
+
+            <!-- Desktop Nav Links -->
+            <div class="hidden lg:flex items-center gap-7 text-xs font-bold uppercase tracking-wider text-his-navy/70">
+                <button onclick="switchView('home')" id="d-nav-home" class="text-his-emerald transition-colors font-extrabold border-b-2 border-his-emerald pb-0.5">Home</button>
+                <button onclick="switchView('academics')" id="d-nav-academics" class="hover:text-his-emerald transition-colors">Academics</button>
+                <button onclick="switchView('why')" id="d-nav-why" class="hover:text-his-emerald transition-colors">Why Choose Us</button>
+                <button onclick="switchView('leadership')" id="d-nav-leadership" class="hover:text-his-emerald transition-colors">Leadership Desk</button>
+                
+                <a href="https://wa.me/2348138916174?text=Hello%20Heritage%20International%20School,%20I%20am%20interested%20in%20admission%20for%20my%20child." target="_blank" class="bg-his-emerald hover:bg-his-navy text-white px-6 py-2.5 rounded-full transition-all shadow-lg shadow-his-emerald/20 flex items-center gap-2 text-xs font-extrabold">
+                    <span class="w-2 h-2 rounded-full bg-his-gold animate-ping"></span>
+                    <span>Admissions Ongoing</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN APP VIEW PORT -->
+    <main class="flex-1 pt-28 pb-32 px-4 md:px-8 max-w-7xl mx-auto w-full">
+        
+        <!-- ================= TAB 1: HOME ================= -->
+        <section id="view-home" class="space-y-16 fade-up">
+            
+            <!-- HERO BANNER -->
+            <div class="relative rounded-3xl overflow-hidden bg-his-navy text-white shadow-2xl border border-his-gold/20 p-8 sm:p-12 lg:p-16 flex flex-col lg:flex-row items-center justify-between">
+                <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-his-emerald/20 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="lg:w-7/12 z-10 space-y-6 text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-his-gold/15 text-his-gold border border-his-gold/30 text-xs font-bold tracking-wide">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>FULLY REGISTERED & APPROVED • OGUN STATE</span>
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-extrabold leading-[1.15]">
+                        Nurturing <span class="text-transparent bg-clip-text bg-gradient-to-r from-his-gold via-yellow-200 to-amber-400">Excellence</span> From The Very First Step.
+                    </h1>
+                    
+                    <p class="text-slate-300 text-sm sm:text-base max-w-xl font-normal leading-relaxed">
+                        Welcome to Heritage International School. We blend rigorous academic foundations with high moral integrity to build confident, articulate, and dynamic future leaders.
+                    </p>
+                    
+                    <div class="pt-2 flex flex-wrap gap-4 items-center">
+                        <a href="https://wa.me/2348138916174" target="_blank" class="bg-his-gold text-his-navy px-8 py-3.5 rounded-xl font-bold text-sm hover:bg-yellow-400 transition-all shadow-xl shadow-his-gold/10 flex items-center gap-3">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>Enroll For Next Academic Term</span>
+                        </a>
+                        <button onclick="switchView('why')" class="px-6 py-3.5 rounded-xl font-bold text-sm bg-white/10 hover:bg-white/20 border border-white/15 transition-all text-white">
+                            Why Bring Your Child Here
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mt-10 lg:mt-0 lg:w-4/12 relative flex justify-center">
+                    <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full p-2 bg-gradient-to-tr from-his-gold to-his-emerald shadow-2xl animate-[spin_60s_linear_infinite]">
+                        <img src="66.jpeg" alt="Happy Nigerian Pupil" class="w-full h-full object-cover rounded-full border-4 border-his-navy animate-[spin_60s_linear_infinite_reverse]">
+                    </div>
+                    <div class="absolute -bottom-4 bg-white text-his-navy px-5 py-2.5 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-100">
+                        <div class="text-his-emerald font-black text-xl">100%</div>
+                        <div class="text-[11px] font-bold leading-tight uppercase tracking-wider">Common Entrance<br>Pass Rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INFINITE SLIDING CAROUSEL: 19 SPORTS DAY PHOTOS -->
+            <div class="space-y-4 pt-4 overflow-hidden">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-2 px-2">
+                    <div>
+                        <span class="text-his-emerald text-xs font-black tracking-widest uppercase">Active Bodies, Sharp Minds</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-his-navy font-serif mt-1">Our Annual Sports Day Showcase</h2>
+                    </div>
+                    <p class="text-xs font-bold text-slate-400 italic">Showing 19 captured moments of athletic excellence & teamwork</p>
+                </div>
+
+                <!-- Infinite CSS Loop Track Wrapper -->
+                <div class="relative w-full overflow-hidden py-4 before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-16 before:bg-gradient-to-r before:from-his-cream before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-16 after:bg-gradient-to-l after:from-his-cream after:to-transparent">
+                    <div id="sports-carousel" class="carousel-track flex gap-4">
+                        <!-- JS Injected 19 Photos Duplicated for Continuous Loop -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- BRIEF ACADEMICS PREVIEW -->
+            <div class="space-y-6">
+                <div class="flex justify-between items-center border-b border-his-navy/10 pb-4">
+                    <h2 class="text-2xl font-serif font-bold text-his-navy">Academic Tiers</h2>
+                    <button onclick="switchView('academics')" class="text-sm font-bold text-his-emerald hover:underline flex items-center gap-1">
+                        View Complete Curriculum <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-l-his-gold space-y-3">
+                        <div class="w-10 h-10 rounded-lg bg-his-gold/10 text-his-gold flex items-center justify-center font-bold text-lg">01</div>
+                        <h3 class="font-bold text-lg text-his-navy">Creche & Toddlers</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Early cognitive development, sensory play, and supervised socialization in a safe, home-like environment.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-l-his-emerald space-y-3">
+                        <div class="w-10 h-10 rounded-lg bg-his-emerald/10 text-his-emerald flex items-center justify-center font-bold text-lg">02</div>
+                        <h3 class="font-bold text-lg text-his-navy">Nursery School</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Montessori-blended foundational literacy, Jolly Phonics, early numeracy, and creative exploration.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl border-l-4 border-l-his-sky space-y-3">
+                        <div class="w-10 h-10 rounded-lg bg-his-sky/10 text-his-sky flex items-center justify-center font-bold text-lg">03</div>
+                        <h3 class="font-bold text-lg text-his-navy">Primary (Basic 1 - 6)</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">Robust National & British standard curriculum preparing pupils seamlessly for elite secondary schools.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SIMPLE ENQUIRY FORM SECTION -->
+            <div class="glass-card rounded-3xl p-8 sm:p-12 border border-his-navy/10 relative overflow-hidden bg-gradient-to-b from-white to-his-cream">
+                <div class="max-w-2xl mx-auto text-center space-y-4 mb-8">
+                    <h2 class="text-3xl font-serif font-extrabold text-his-navy">Fast Admission Enquiry</h2>
+                    <p class="text-sm text-slate-600">Fill out this simple enquiry form or contact our admission desk directly via WhatsApp.</p>
+                </div>
+
+                <form id="enquiryForm" onsubmit="handleEnquiry(event)" class="max-w-xl mx-auto space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[11px] font-bold uppercase tracking-wider text-his-navy mb-1">Parent's Full Name *</label>
+                            <input type="text" required placeholder="e.g. Chief Adebayo" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-his-emerald text-sm bg-white">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold uppercase tracking-wider text-his-navy mb-1">Phone / WhatsApp Number *</label>
+                            <input type="tel" required placeholder="+234 813 891 6174" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-his-emerald text-sm bg-white">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[11px] font-bold uppercase tracking-wider text-his-navy mb-1">Email Address</label>
+                            <!-- Email Placeholder Section -->
+                            <input type="email" placeholder="[email placeholder / optional]" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-his-emerald text-sm bg-white text-slate-500 placeholder:italic">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold uppercase tracking-wider text-his-navy mb-1">Child's Proposed Class</label>
+                            <select class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-his-emerald text-sm bg-white font-medium text-slate-700">
+                                <option>Creche / Daycare</option>
+                                <option>Nursery 1 or 2</option>
+                                <option>Lower Primary (Basic 1 - 3)</option>
+                                <option>Upper Primary (Basic 4 - 6)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] font-bold uppercase tracking-wider text-his-navy mb-1">Any specific questions?</label>
+                        <textarea rows="3" placeholder="Tell us your child's age or any special requests..." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-his-emerald text-sm bg-white"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-his-navy hover:bg-his-emerald text-his-gold font-extrabold py-4 rounded-xl shadow-lg transition-all text-sm uppercase tracking-widest">
+                        Submit Enquiry
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- ================= TAB 2: ACADEMICS & ADMISSIONS ================= -->
+        <section id="view-academics" class="hidden space-y-8 fade-up">
+            <div class="glass-card rounded-3xl p-8 border-l-8 border-l-his-emerald">
+                <h2 class="text-3xl font-serif font-extrabold text-his-navy">Academic Divisions</h2>
+                <p class="text-sm text-slate-600 mt-1">Select any tier below to view class ratios, daily routines, and core learning competencies.</p>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6" id="academics-grid-container">
+                <!-- Dynamically Populated via JS matching Heritage International Tiers -->
+            </div>
+        </section>
+
+        <!-- ================= TAB 3: WHY CHOOSE US ================= -->
+        <section id="view-why" class="hidden space-y-12 fade-up">
+            <div class="text-center max-w-2xl mx-auto space-y-3">
+                <span class="text-his-emerald text-xs font-black tracking-widest uppercase">The Heritage Advantage</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-his-navy">Why Bring Your Child To Heritage International School</h2>
+                <p class="text-sm text-slate-600">In Ogun State's educational landscape, we stand apart through uncompromising standards and dedicated mentorship.</p>
+            </div>
+
+            <!-- Feature Badges -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-3">
+                    <div class="w-12 h-12 bg-his-gold/15 text-his-gold rounded-xl flex items-center justify-center text-xl font-bold"><i class="fa-solid fa-stamp"></i></div>
+                    <h3 class="font-bold text-his-navy">Fully Registered</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">Officially approved by the Ogun State Ministry of Education. Our certificates carry full statutory recognition.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-3">
+                    <div class="w-12 h-12 bg-his-emerald/15 text-his-emerald rounded-xl flex items-center justify-center text-xl font-bold"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3 class="font-bold text-his-navy">Secure Gated Campus</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">Perimeter security, strict pickup identity verification protocols, and trained safety staff on campus.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-3">
+                    <div class="w-12 h-12 bg-his-sky/15 text-his-sky rounded-xl flex items-center justify-center text-xl font-bold"><i class="fa-solid fa-laptop-code"></i></div>
+                    <h3 class="font-bold text-his-navy">Modern ICT & Phonics</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">Computer appreciation from early primary grades paired with intensive British standard diction practice.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-3">
+                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-xl font-bold"><i class="fa-solid fa-people-roof"></i></div>
+                    <h3 class="font-bold text-his-navy">Small Class Sizes</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">Low pupil-to-teacher ratios ensuring quiet learners receive individualized attention and encouragement.</p>
+                </div>
+            </div>
+
+            <!-- Visual Charts Section -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass-card rounded-3xl p-6 sm:p-8">
+                    <h3 class="text-sm font-black uppercase tracking-wider text-his-navy mb-6 flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-his-gold"></span> Daily Curriculum Focus
+                    </h3>
+                    <div class="h-64 relative flex justify-center">
+                        <canvas id="macroChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-3xl p-6 sm:p-8">
+                    <h3 class="text-sm font-black uppercase tracking-wider text-his-navy mb-6 flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-his-emerald"></span> Parent Satisfaction Ratings
+                    </h3>
+                    <div class="h-64 relative">
+                        <canvas id="mineralChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 4: LEADERSHIP DESK ================= -->
+        <section id="view-leadership" class="hidden space-y-12 fade-up">
+            <div class="text-center max-w-xl mx-auto">
+                <h2 class="text-3xl font-serif font-bold text-his-navy">Guided By Vision & Experience</h2>
+                <p class="text-sm text-slate-500 mt-1">Words from the administrative stewards of Heritage International School</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Director Desk -->
+                <div class="glass-card rounded-3xl overflow-hidden border border-his-navy/10 flex flex-col">
+                    <div class="bg-his-navy p-6 text-white flex items-center gap-4">
+                        <img src="67.jpeg" class="w-16 h-16 rounded-full border-2 border-his-gold object-cover" alt="Mr Sam Taiwo">
+                        <div>
+                            <h3 class="font-serif font-bold text-xl text-his-gold">Mr. Sam Taiwo</h3>
+                            <p class="text-xs uppercase tracking-widest text-slate-300 font-bold">Director</p>
+                        </div>
+                    </div>
+                    <div class="p-8 space-y-4 flex-1 flex flex-col justify-between">
+                        <blockquote class="text-sm text-slate-700 leading-relaxed italic border-l-4 border-his-gold pl-4">
+                            "When Heritage International School was founded here in Ogun State, our driving philosophy was clear: every child carries immense potential waiting to be unlocked. We invest wholeheartedly in recruiting educators who understand child development, moral uprightness, and modern pedagogical tools. Choosing Heritage International means partnering with a family dedicated to giving your child a rock-solid foundation for life."
+                        </blockquote>
+                        <div class="pt-4 text-right">
+                            <span class="font-serif font-bold text-his-navy tracking-wider text-sm">~ Sam Taiwo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Headmaster Desk -->
+                <div class="glass-card rounded-3xl overflow-hidden border border-his-navy/10 flex flex-col">
+                    <div class="bg-his-emerald p-6 text-white flex items-center gap-4">
+                        <img src="67.jpeg" class="w-16 h-16 rounded-full border-2 border-white object-cover" alt="Mr Joseph Ayodele">
+                        <div>
+                            <h3 class="font-serif font-bold text-xl text-white">Mr. Joseph Ayodele</h3>
+                            <p class="text-xs uppercase tracking-widest text-emerald-100 font-bold">Headmaster</p>
+                        </div>
+                    </div>
+                    <div class="p-8 space-y-4 flex-1 flex flex-col justify-between">
+                        <blockquote class="text-sm text-slate-700 leading-relaxed italic border-l-4 border-his-emerald pl-4">
+                            "Academic excellence and pastoral care walk hand in hand at our school. Children learn best when clear structure meets genuine encouragement. My daily commitment is to ensure that core literacy, neatness, computational accuracy, and public speaking confidence are practiced consistently in every classroom. Our doors are always open to parents."
+                        </blockquote>
+                        <div class="pt-4 text-right">
+                            <span class="font-serif font-bold text-his-navy tracking-wider text-sm">~ Joseph Ayodele</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Direct Call Banner -->
+            <div class="bg-gradient-to-r from-his-gold/20 to-his-emerald/10 p-8 rounded-3xl text-center border border-his-gold/30">
+                <h4 class="font-bold text-his-navy text-lg mb-2">Speak Directly With Administration</h4>
+                <p class="text-xs text-slate-600 mb-4">Have specific developmental inquiries regarding admission for the upcoming term?</p>
+                <a href="tel:+2348138916174" class="inline-flex items-center gap-2 bg-his-navy text-white px-6 py-3 rounded-full text-xs font-bold hover:bg-his-emerald transition-colors shadow-md">
+                    <i class="fa-solid fa-phone"></i> Call Administration (+2348138916174)
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-his-navy text-white pt-16 pb-24 md:pb-12 border-t-4 border-his-gold">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+            <div class="md:col-span-2 space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="h-8 w-8 rounded-full bg-his-gold text-his-navy flex items-center justify-center font-bold">HIS</div>
+                    <span class="font-serif font-bold text-xl tracking-wider">HERITAGE INTERNATIONAL</span>
+                </div>
+                <p class="text-xs text-slate-300 max-w-sm leading-relaxed">
+                    A fully registered premier Nursery and Primary educational institution in Ogun State, Nigeria. Dedicated to raising tomorrow's leaders through knowledge and character.
+                </p>
+                <div class="text-xs text-his-gold font-bold">
+                    🟢 ADMISSIONS ONGOING FOR THE NEXT TERM
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-xs font-bold uppercase tracking-widest text-his-gold mb-3">Navigation</h4>
+                <ul class="space-y-2 text-xs text-slate-300">
+                    <li><button onclick="switchView('home')" class="hover:text-white">Home Page</button></li>
+                    <li><button onclick="switchView('academics')" class="hover:text-white">Academics & Admissions</button></li>
+                    <li><button onclick="switchView('why')" class="hover:text-white">Why Choose Heritage</button></li>
+                    <li><button onclick="switchView('leadership')" class="hover:text-white">Director & Headmaster</button></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-xs font-bold uppercase tracking-widest text-his-gold mb-3">Contact Desk</h4>
+                <div class="space-y-2.5 text-xs text-slate-300">
+                    <p class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-his-gold"></i> Ogun State, Nigeria</p>
+                    <p class="flex items-center gap-2"><i class="fa-solid fa-phone text-his-gold"></i> +234 813 891 6174</p>
+                    <p class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-[#25D366]"></i> +234 813 891 6174</p>
+                    <p class="flex items-center gap-2 text-slate-400 italic"><i class="fa-solid fa-envelope text-his-gold"></i> [email placeholder / optional]</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 pt-6 text-center text-[11px] text-slate-500 font-medium flex flex-col sm:flex-row justify-between items-center gap-2">
+            <span>&copy; 2026 Heritage International School. Fully Registered.</span>
+            <span>Excellence • Discipline • Integrity</span>
+        </div>
+    </footer>
+
+    <!-- MOBILE BOTTOM APP NAVIGATION -->
+    <nav class="lg:hidden fixed bottom-4 left-1/2 -translate-x-1/2 w-[92%] max-w-md z-50">
+        <div class="glass bg-his-navy/95 text-white rounded-full px-4 py-3 flex justify-around items-center shadow-2xl border border-white/10">
+            <button onclick="switchView('home')" id="m-nav-home" class="flex flex-col items-center text-his-gold w-14">
+                <i class="fa-solid fa-house text-base"></i>
+                <span class="text-[9px] mt-1 font-bold">Home</span>
+            </button>
+            <button onclick="switchView('academics')" id="m-nav-academics" class="flex flex-col items-center text-slate-400 hover:text-white w-14">
+                <i class="fa-solid fa-book-open text-base"></i>
+                <span class="text-[9px] mt-1 font-bold">Classes</span>
+            </button>
+            <button onclick="switchView('why')" id="m-nav-why" class="flex flex-col items-center text-slate-400 hover:text-white w-14">
+                <i class="fa-solid fa-award text-base"></i>
+                <span class="text-[9px] mt-1 font-bold">Why Us</span>
+            </button>
+            <button onclick="switchView('leadership')" id="m-nav-leadership" class="flex flex-col items-center text-slate-400 hover:text-white w-14">
+                <i class="fa-solid fa-user-tie text-base"></i>
+                <span class="text-[9px] mt-1 font-bold">Leaders</span>
+            </button>
+            <a href="https://wa.me/2348138916174" class="flex flex-col items-center text-[#25D366] w-12 pl-1 border-l border-white/15">
+                <i class="fa-brands fa-whatsapp text-xl"></i>
+                <span class="text-[8px] mt-0.5 font-bold">Chat</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- CLASS SYLLABUS MODAL -->
+    <div id="product-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4" aria-modal="true">
+        <div class="absolute inset-0 bg-his-navy/70 backdrop-blur-sm transition-opacity" onclick="closeModal()"></div>
+        <div class="relative w-full max-w-3xl bg-white rounded-3xl shadow-2xl overflow-hidden z-10 grid grid-cols-1 md:grid-cols-12 border border-slate-100 max-h-[90vh] flex flex-col">
+            
+            <div class="md:col-span-5 relative bg-his-cream min-h-[200px] md:min-h-full">
+                <img id="modal-img" src="" class="w-full h-full object-cover" alt="Class division">
+                <div class="absolute top-4 left-4 bg-his-navy text-his-gold text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest shadow">
+                    <span id="modal-tag">TIER</span>
+                </div>
+            </div>
+
+            <div class="md:col-span-7 p-6 sm:p-8 overflow-y-auto space-y-5">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 id="modal-title" class="text-2xl font-serif font-bold text-his-navy">Class Name</h3>
+                        <p id="modal-tagline" class="text-xs font-bold text-his-emerald mt-0.5">Subtitle</p>
+                    </div>
+                    <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center hover:bg-slate-200"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <div class="grid grid-cols-3 gap-2 py-2 border-y border-slate-100 text-center">
+                    <div class="p-2"><div id="stat-1" class="text-xs font-black text-his-navy">--</div><div class="text-[9px] uppercase text-slate-400">Age Focus</div></div>
+                    <div class="p-2 border-x border-slate-100"><div id="stat-2" class="text-xs font-black text-his-navy">--</div><div class="text-[9px] uppercase text-slate-400">Class Ratio</div></div>
+                    <div class="p-2"><div id="stat-3" class="text-xs font-black text-his-navy">--</div><div class="text-[9px] uppercase text-slate-400">Standard</div></div>
+                </div>
+
+                <div>
+                    <h4 class="text-[11px] font-black uppercase text-slate-400 tracking-wider mb-1">Class Overview</h4>
+                    <p id="modal-desc" class="text-xs text-slate-600 leading-relaxed font-medium"></p>
+                </div>
+
+                <div>
+                    <h4 class="text-[11px] font-black uppercase text-slate-400 tracking-wider mb-1">Core Areas Covered</h4>
+                    <p id="modal-ingredients" class="text-xs text-his-navy font-bold bg-his-cream p-3 rounded-xl border border-his-navy/5"></p>
+                </div>
+
+                <a href="https://wa.me/2348138916174?text=Hello%20Heritage%20International%20School,%20I%20want%20to%20enquire%20about%20admissions." target="_blank" class="w-full mt-4 bg-[#25D366] hover:bg-emerald-600 text-white font-extrabold py-3.5 rounded-xl flex items-center justify-center gap-2 text-xs uppercase tracking-wider shadow-lg shadow-green-500/10">
+                    <i class="fa-brands fa-whatsapp text-base"></i> Chat With Admissions Desk
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT APPLICATION LOGIC -->
+    <script>
+        // Heritage International School Academic Divisions Data
+        const academicClasses = [
+            {
+                title: "Creche & Toddler Care",
+                tagline: "Loving care meets early sensory exploration",
+                tag: "AGES 3 MONTHS - 2 YRS",
+                image: "https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=600&q=80",
+                stats: ["0 - 2 Years", "1 : 4 Ratio", "Montessori Sensory"],
+                desc: "Designed for busy parents in Ogun State needing absolute reliability. Dedicated caregivers manage feeding schedules, hygiene routines, nap times, and gentle introductions to colors, sounds, and spatial coordination.",
+                ingredients: "Sensory Toys, Baby Rhymes, Assisted Crawling/Walking, Speech Stimulation, Daily Parent Progress Sheets."
+            },
+            {
+                title: "Nursery 1 & 2",
+                tagline: "Building confident speakers and early readers",
+                tag: "AGES 3 - 4 YEARS",
+                image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80",
+                stats: ["3 - 4 Years", "1 : 10 Ratio", "EYFS / Phonics"],
+                desc: "Pupils begin structured play-learning. We emphasize Jolly Phonics for rapid reading acquisition, pencil grip development, early numeracy, shape identification, and positive social interaction.",
+                ingredients: "Jolly Phonics, Number Work, Health & Habits, Rhymes & Diction, Creative Coloring, Sand-Tray Writing."
+            },
+            {
+                title: "Lower Primary (Basic 1 - 3)",
+                tagline: "Concrete foundational learning & literacy fluency",
+                tag: "AGES 5 - 7 YEARS",
+                image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80",
+                stats: ["5 - 7 Years", "1 : 15 Ratio", "NERDC + British"],
+                desc: "Seamless transition into standard academic subjects. Focus deepens on reading comprehension, independent sentence construction, basic multiplication/division, verbal reasoning, and environmental awareness.",
+                ingredients: "English Language, Mathematics, Basic Science & Tech, Verbal/Quantitative Reasoning, ICT Basics, Civic Education."
+            },
+            {
+                title: "Upper Primary (Basic 4 - 6)",
+                tagline: "Mastery, Leadership & Exam Preparation",
+                tag: "AGES 8 - 10+ YEARS",
+                image: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=600&q=80",
+                stats: ["8 - 10+ Yrs", "1 : 15 Ratio", "Common Entrance Prep"],
+                desc: "Rigorous analytical instruction geared toward placing pupils in elite Federal, State, and Private secondary schools. Strong focus on advanced math, essay writing, scientific logic, and character ethics.",
+                ingredients: "Advanced Numeracy, Pre-Algebra concepts, General Paper, Vocational Aptitude, French Intro, Exam Simulation Labs."
+            },
+            {
+                title: "ICT & Digital Suite",
+                tagline: "Equipping Ogun State pupils for the digital age",
+                tag: "SPECIALIZED FACILITY",
+                image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80",
+                stats: ["All Primary", "1 : 1 Desktop", "Practical Computing"],
+                desc: "Heritage International School operates a dedicated computing facility. Children learn typing ergonomics, document layout, digital illustration, and foundational logical sequencing.",
+                ingredients: "Computer Appreciation, Word Processing, Internet Safety Rules, Educational Software Navigation."
+            },
+            {
+                title: "Sports, Arts & Culture",
+                tagline: "Nurturing well-rounded personalities beyond textbooks",
+                tag: "EXTRA CURRICULAR",
+                image: "https://images.unsplash.com/photo-1526976668912-1a811878dd37?auto=format&fit=crop&w=600&q=80",
+                stats: ["Weekly Fridays", "Inter-House", "Talent Discovery"],
+                desc: "We believe every child has unique gifts. Pupils engage in weekly track events, football, cultural dance, fine arts exhibitions, debates, and public speaking assemblies.",
+                ingredients: "Track & Field, Board Games (Chess/Scrabble), Cultural Troupe, Drama Club, Voice & Elocution training."
+            }
+        ];
+
+        // 1. Render 19 Sports Day Photos Carousel (Infinite Loop)
+        function renderSportsCarousel() {
+            const track = document.getElementById('sports-carousel');
+            if(!track) return;
+            
+            const seeds = [
+                'race', 'jump', 'football', 'cheer', 'medal', 'kidsrun', 'schoolsport', 'relay', 'teamwork', 'trophy',
+                'smile', 'gym', 'coach', 'playground', 'exercise', 'winner', 'sackrace', 'energy', 'outdoor'
+            ];
+            
+            let html = '';
+            // Duplicate array to 38 items for infinite seamless CSS scroll
+            const photoList = [...seeds, ...seeds]; 
+
+            photoList.forEach((seed, index) => {
+                const imgNum = (index % 19) + 1;
+                html += `
+                    <div class="w-60 h-40 flex-shrink-0 rounded-2xl overflow-hidden shadow-md border-2 border-white relative group bg-slate-200">
+                        <img src="https://picsum.photos/seed/hissport_${seed}/400/300" alt="Heritage International School Sports Day Photo ${imgNum}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-his-navy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                            <span class="text-[10px] font-bold text-white uppercase tracking-wider"><i class="fa-solid fa-camera text-his-gold"></i> Sports Day #${imgNum}</span>
+                        </div>
+                    </div>
+                `;
+            });
+            track.innerHTML = html;
+        }
+
+        // 2. Render Academics Grid
+        function renderAcademicsGrid() {
+            const container = document.getElementById('academics-grid-container');
+            if(!container) return;
+            
+            container.innerHTML = academicClasses.map((item, idx) => `
+                <article onclick="openModal(${idx})" class="group glass-card rounded-2xl p-3.5 cursor-pointer hover:-translate-y-1.5 transition-all duration-300 relative flex flex-col justify-between">
+                    <div>
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-slate-100 relative">
+                            <img src="${item.image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="${item.title}">
+                            <span class="absolute top-2 left-2 bg-his-navy/90 text-white text-[9px] font-black px-2 py-0.5 rounded backdrop-blur">${item.tag}</span>
+                        </div>
+                        <h3 class="font-bold text-his-navy text-sm sm:text-base leading-snug">${item.title}</h3>
+                        <p class="text-[11px] text-slate-500 line-clamp-2 mt-1">${item.tagline}</p>
+                    </div>
+                    <div class="mt-3 pt-2 border-t border-slate-100 flex justify-between items-center text-his-emerald font-bold text-xs">
+                        <span>Explore Syllabus</span>
+                        <i class="fa-solid fa-circle-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        // 3. Tab Navigation Router
+        function switchView(viewId) {
+            const views = ['home', 'academics', 'why', 'leadership'];
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            views.forEach(v => {
+                const el = document.getElementById(`view-${v}`);
+                const dBtn = document.getElementById(`d-nav-${v}`);
+                const mBtn = document.getElementById(`m-nav-${v}`);
+
+                if(v === viewId) {
+                    el?.classList.remove('hidden');
+                    if(dBtn) dBtn.className = "text-his-emerald font-extrabold transition-colors border-b-2 border-his-emerald pb-0.5";
+                    if(mBtn) mBtn.className = "flex flex-col items-center text-his-gold w-14 scale-105 transition-transform";
+                    
+                    // Lazy initialize charts when "Why Choose Us" tab opens
+                    if(v === 'why' && !window.chartsInitialized) {
+                        initCharts();
+                        window.chartsInitialized = true;
+                    }
+                } else {
+                    el?.classList.add('hidden');
+                    if(dBtn) dBtn.className = "hover:text-his-emerald transition-colors font-bold text-his-navy/70";
+                    if(mBtn) mBtn.className = "flex flex-col items-center text-slate-400 hover:text-white w-14";
+                }
+            });
+        }
+
+        // 4. Modal Handlers
+        function openModal(idx) {
+            const data = academicClasses[idx];
+            if(!data) return;
+
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-tagline').innerText = data.tagline;
+            document.getElementById('modal-tag').innerText = data.tag;
+            document.getElementById('modal-img').src = data.image;
+            document.getElementById('modal-desc').innerText = data.desc;
+            document.getElementById('modal-ingredients').innerText = data.ingredients;
+            document.getElementById('stat-1').innerText = data.stats[0];
+            document.getElementById('stat-2').innerText = data.stats[1];
+            document.getElementById('stat-3').innerText = data.stats[2];
+
+            document.getElementById('product-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+        }
+
+        // 5. Chart.js Configurations
+        function initCharts() {
+            Chart.defaults.font.family = 'Plus Jakarta Sans';
+            
+            // Pie Chart
+            new Chart(document.getElementById('macroChart').getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Core Numeracy/Literacy', 'STEM & Sciences', 'Vocational & ICT', 'Moral & Sports'],
+                    datasets: [{
+                        data: [40, 25, 20, 15],
+                        backgroundColor: ['#0B1E36', '#0F865D', '#D4AF37', '#4A90E2'],
+                        borderWidth: 0
+                    }]
+                },
+                options: { responsive: true, cutout: '65%', plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: {size: 10} } } } }
+            });
+
+            // Bar Chart
+            new Chart(document.getElementById('mineralChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['Academic Standard', 'Child Safety', 'Staff Courtesy', 'Moral Uprightness'],
+                    datasets: [{
+                        data: [4.9, 5.0, 4.85, 4.95],
+                        backgroundColor: '#0F865D',
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { y: { max: 5, beginAtZero: true } }
+                }
+            });
+        }
+
+        // 6. Enquiry Form Handler
+        function handleEnquiry(e) {
+            e.preventDefault();
+            alert("Thank you! Your enquiry for Heritage International School has been submitted. Redirecting you to our Admission Desk on WhatsApp...");
+            window.open("https://wa.me/2348138916174?text=Hello%20Heritage%20International%20School,%20I%20just%20filled%20out%20the%20enquiry%20form%20on%20your%20website.", "_blank");
+        }
+
+        // Initialize Application
+        window.addEventListener('DOMContentLoaded', () => {
+            renderSportsCarousel();
+            renderAcademicsGrid();
+        });
+    </script>
+</body>
+</html>
