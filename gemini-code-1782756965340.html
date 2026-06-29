@@ -554,32 +554,55 @@
         ];
 
         // 1. Render 19 Sports Day Photos Carousel (Infinite Loop)
-        function renderSportsCarousel() {
-            const track = document.getElementById('sports-carousel');
-            if(!track) return;
-            
-            const seeds = [
-                'race', 'jump', 'football', 'cheer', 'medal', 'kidsrun', 'schoolsport', 'relay', 'teamwork', 'trophy',
-                'smile', 'gym', 'coach', 'playground', 'exercise', 'winner', 'sackrace', 'energy', 'outdoor'
-            ];
-            
-            let html = '';
-            // Duplicate array to 38 items for infinite seamless CSS scroll
-            const photoList = [...seeds, ...seeds]; 
+function renderSportsCarousel() {
+    const track = document.getElementById('sports-carousel');
+    if(!track) return;
+    
+    // STEP 1: Replace the 'seeds' array with the file paths to your actual images.
+    // Assuming your images are saved in a folder named "images" relative to your HTML file.
+    const myImages = [
+        'images/sport-1.jpg',
+        'images/sport-2.jpg',
+        'images/sport-3.jpg',
+        'images/sport-4.jpg',
+        'images/sport-5.jpg',
+        'images/sport-6.jpg',
+        'images/sport-7.jpg',
+        'images/sport-8.jpg',
+        'images/sport-9.jpg',
+        'images/sport-10.jpg',
+        'images/sport-11.jpg',
+        'images/sport-12.jpg',
+        'images/sport-13.jpg',
+        'images/sport-14.jpg',
+        'images/sport-15.jpg',
+        'images/sport-16.jpg',
+        'images/sport-17.jpg',
+        'images/sport-18.jpg',
+        'images/sport-19.jpg'
+    ];
+    
+    let html = '';
+    
+    // STEP 2: Duplicate the array to create the seamless infinite scroll effect
+    const photoList = [...myImages, ...myImages]; 
 
-            photoList.forEach((seed, index) => {
-                const imgNum = (index % 19) + 1;
-                html += `
-                    <div class="w-60 h-40 flex-shrink-0 rounded-2xl overflow-hidden shadow-md border-2 border-white relative group bg-slate-200">
-                        <img src="https://picsum.photos/seed/hissport_${seed}/400/300" alt="Heritage International School Sports Day Photo ${imgNum}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-his-navy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
-                            <span class="text-[10px] font-bold text-white uppercase tracking-wider"><i class="fa-solid fa-camera text-his-gold"></i> Sports Day #${imgNum}</span>
-                        </div>
-                    </div>
-                `;
-            });
-            track.innerHTML = html;
-        }
+    // STEP 3: Change 'seed' to 'imagePath' in the forEach loop
+    photoList.forEach((imagePath, index) => {
+        const imgNum = (index % 19) + 1;
+        html += `
+            <div class="w-60 h-40 flex-shrink-0 rounded-2xl overflow-hidden shadow-md border-2 border-white relative group bg-slate-200">
+                <img src="${imagePath}" alt="Heritage International School Sports Day Photo ${imgNum}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                
+                <div class="absolute inset-0 bg-gradient-to-t from-his-navy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                    <span class="text-[10px] font-bold text-white uppercase tracking-wider"><i class="fa-solid fa-camera text-his-gold"></i> Sports Day #${imgNum}</span>
+                </div>
+            </div>
+        `;
+    });
+    
+    track.innerHTML = html;
+}
 
         // 2. Render Academics Grid
         function renderAcademicsGrid() {
