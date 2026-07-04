@@ -834,17 +834,78 @@ function renderSportsCarousel() {
         }
 
         // 6. Enquiry Form Handler
+        // 6. Enquiry Form Handler
         function handleEnquiry(e) {
             e.preventDefault();
             alert("Thank you! Your enquiry for Heritage International School has been submitted. Redirecting you to our Admission Desk on WhatsApp...");
             window.open("https://wa.me/2348138916174?text=Hello%20Heritage%20International%20School,%20I%20just%20filled%20out%20the%20enquiry%20form%20on%20your%20website.", "_blank");
         }
 
+        // 7. Network Status Notification Monitor
+        function initNetworkMonitor() {
+            const toast = document.getElementById('network-toast');
+            const content = document.getElementById('toast-content');
+            const icon = document.getElementById('toast-icon');
+            const text = document.getElementById('toast-text');
+
+            if (!toast || !content || !icon || !text) return;
+
+            // Track if the user has triggered an offline state during this session
+            let wentOffline = false;
+
+            function updateStatus() {
+                if (navigator.onLine) {
+                    // Only alert "Back Online" if they were previously disconnected
+                    if (wentOffline) {
+                        toast.classList.remove('hidden');
+                        content.className = "px-5 py-3 rounded-xl shadow-2xl flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-white bg-his-emerald/95 border-his-emerald/20 transition-all duration-300 animate-bounce";
+                        icon.className = "fa-solid fa-circle-check text-his-gold text-sm";
+                        text.innerText = "Connection Restored! You are back online.";
+                        
+                        // Automatically hide the "back online" success toast after 3.5 seconds
+                        setTimeout(() => {
+                            if (navigator.onLine) {
+                                toast.classList.add('hidden');
+                            }
+                        }, 3500);
+                        wentOffline = false;
+                    } else {
+                        // Initial page load is online; keep hidden
+                        toast.classList.add('hidden');
+                    }
+                } else {
+                    // User went offline
+                    wentOffline = true;
+                    toast.classList.remove('hidden');
+                    content.className = "px-5 py-3 rounded-xl shadow-2xl flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-white bg-his-accent/95 border-his-accent/20 transition-all duration-300";
+                    icon.className = "fa-solid fa-wifi-slash text-white text-sm";
+                    text.innerText = "Internet connection lost. Working offline.";
+                }
+            }
+
+            // Event listeners for connection state changes
+            window.addEventListener('online', updateStatus);
+            window.addEventListener('offline', updateStatus);
+
+            // Initial check on page load
+            if (!navigator.onLine) {
+                updateStatus();
+            }
+        }
+
         // Initialize Application
         window.addEventListener('DOMContentLoaded', () => {
             renderSportsCarousel();
             renderAcademicsGrid();
+            initNetworkMonitor(); // <-- Your new network monitor starts here
         });
     </script>
+    <!-- Network Status Toast Notification -->
+<div id="network-toast" class="fixed top-24 left-1/2 -translate-x-1/2 z-50 hidden transform transition-all duration-300 max-w-sm w-[90%] sm:w-auto">
+    <div id="toast-content" class="px-5 py-3 rounded-xl shadow-2xl flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-white border backdrop-blur-md">
+        <i id="toast-icon" class="fa-solid text-sm"></i>
+        <span id="toast-text"></span>
+    </div>
+</div>
 </body>
 </html>
