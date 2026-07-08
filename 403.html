@@ -655,16 +655,16 @@
                 title: "ICT & Digital Suite",
                 tagline: "Equipping Ogun State pupils for the digital age",
                 tag: "SPECIALIZED FACILITY",
-                image: "IMG-20260701-WA0013(1).jpg",
+                image: "c6.jpg",
                 stats: ["All Primary", "1 : 1 Desktop", "Practical Computing"],
-                desc: "Heritage International School operates a dedicated computing facility. Children learn typing ergonomics, document layout, digital illustration, and foundational logical sequencing.",
+                desc: "God's Chosen Heritage International School operates a dedicated computing facility. Children learn typing ergonomics, document layout, digital illustration, and foundational logical sequencing.",
                 ingredients: "Computer Appreciation, Word Processing, Internet Safety Rules, Educational Software Navigation."
             },
             {
                 title: "Sports, Arts & Culture",
                 tagline: "Nurturing well-rounded personalities beyond textbooks",
                 tag: "EXTRA CURRICULAR",
-                image: "IMG-20260701-WA0007(1).jpg",
+                image: "c1.jpg",
                 stats: ["Weekly Fridays", "Inter-House", "Talent Discovery"],
                 desc: "We believe every child has unique gifts. Pupils engage in weekly track events, football, cultural dance, fine arts exhibitions, debates, and public speaking assemblies.",
                 ingredients: "Track & Field, Board Games (Chess/Scrabble), Cultural Troupe, Agriculture, Drama Club, Voice & Elocution training."
@@ -679,25 +679,21 @@ function renderSportsCarousel() {
     // STEP 1: Replace the 'seeds' array with the file paths to your actual images.
     // Assuming your images are saved in a folder named "images" relative to your HTML file.
     const myImages = [
-        'IMG-20260701-WA0002(1).jpg',
-        'IMG-20260701-WA0004(1).jpg',
-        'IMG-20260701-WA0017(2).jpg',
-        'IMG-20260701-WA0030.jpg',
-        'IMG-20260701-WA0029.jpg',
-        'IMG-20260701-WA0018.jpg',
-        'IMG-20260701-WA0026.jpg',
-        'IMG-20260701-WA0025.jpg',
-        'IMG-20260701-WA0023.jpg',
-        'IMG-20260701-WA0027.jpg',
-        'IMG-20260701-WA0003(2).jpg',
-        'IMG-20260701-WA0008(1).jpg',
-        'IMG-20260701-WA0010(1).jpg',
-        '14.jpeg',
-        'IMG-20260701-WA0020(1).jpg',
-        '16.jpeg',
-        '17.jpeg',
-        '18.jpeg',
-        '19.jpeg'
+        'c6.jpg',
+        'c2.jpg',
+        'c3.jpg',
+        'c4.jpg',
+        'c5.jpg',
+        'c1.jpg',
+        'c7.jpg',
+        'c8.jpg',
+        'c9.jpg',
+        'c10.jpg',
+        'c11.jpg',
+        'c12.jpg',
+        'c13.jpg',
+        'c14.jpg'
+        
     ];
     
     let html = '';
@@ -707,7 +703,7 @@ function renderSportsCarousel() {
 
     // STEP 3: Change 'seed' to 'imagePath' in the forEach loop
     photoList.forEach((imagePath, index) => {
-        const imgNum = (index % 19) + 1;
+        const imgNum = (index % 14) + 1;
         html += `
             <div class="w-60 h-40 flex-shrink-0 rounded-2xl overflow-hidden shadow-md border-2 border-white relative group bg-slate-200">
                 <img src="${imagePath}" alt="Heritage International School Sports Day Photo ${imgNum}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
